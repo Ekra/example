@@ -6,6 +6,8 @@ class LessonsTest extends ApiTester {
 
 	/**
 	 * A basic functional test example.
+     *
+     * Fetch a lesson
 	 *
 	 * @return void
 	 */
@@ -23,6 +25,8 @@ class LessonsTest extends ApiTester {
 
 	}
 
+    /*@Find a single lesson and make a request should be 200 and able find the attributes*/
+
     public function  it_fetches_a_single_lesson()
     {
         $this->make('Lesson');
@@ -36,6 +40,8 @@ class LessonsTest extends ApiTester {
 
     }
 
+    /*When trying to request a lesson that does not exist 404 should be returned*/
+
     public function it_404s_if_a_lesson_is_not_found()
     {
         $json =  $this->getJson('api/v1/lessons/1/x');
@@ -47,7 +53,8 @@ class LessonsTest extends ApiTester {
 
     }
 
-    //Below is test post or test store
+    /*Below is test post or test store that also tests lessons POST  if it works then should get 201 created*/
+
 
     public  function  it_creates_a_new_lesson_given_valid_parameters()
     {
@@ -56,6 +63,7 @@ class LessonsTest extends ApiTester {
         $this->assertResponseStatus(201);
 
     }
+    /*if the request fails validation*/
 
     public  function  it_throws_a_422_if_a_new_lesson_request_fails_validation()
     {
@@ -65,6 +73,8 @@ class LessonsTest extends ApiTester {
 
 
     }
+
+    /*How a lesson is constructed*/
 
     protected   function  getStub()
     {
